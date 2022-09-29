@@ -9,16 +9,18 @@ import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 function App() {
   return (
     <ShoppingCartProvider>
-      <Navbar />
-      <Container>
-        <div className="mb-4">
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/store" element={<Store />}></Route>
-            <Route path="/about" element={<About />}></Route>
-          </Routes>
-        </div>
-      </Container>
+      <div className="overflow-x-hidden h-screen">
+        <Navbar />
+        <Container>
+          <div className="mb-4">
+            <Routes>
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/store" element={<Store />}></Route>
+              <Route path="/about" element={<About />}></Route>
+            </Routes>
+          </div>
+        </Container>
+      </div>
     </ShoppingCartProvider>
   );
 }

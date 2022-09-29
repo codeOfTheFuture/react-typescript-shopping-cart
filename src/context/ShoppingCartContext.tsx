@@ -16,6 +16,7 @@ interface ShoppingCartContext {
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
+  isOpen: boolean;
   cartQuantity: number;
   cartItems: CartItem[];
 }
@@ -87,10 +88,11 @@ const ShoppingCartProvider: FC<Props> = ({ children }) => {
         removeFromCart,
         openCart,
         closeCart,
+        isOpen,
         cartItems,
         cartQuantity,
       }}>
-      {children}
+      <main className="relative">{children}</main>
     </ShoppingCartContext.Provider>
   );
 };
