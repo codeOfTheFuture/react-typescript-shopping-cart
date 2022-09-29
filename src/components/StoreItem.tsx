@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useShoppingCart } from "../context/ShoppingCartContext";
 import formatCurrency from "../utils/formatCurrency";
 
 interface Props {
@@ -9,7 +10,14 @@ interface Props {
 }
 
 const StoreItem: FC<Props> = ({ id, name, price, imgUrl }) => {
-  const quantity: number = 0;
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useShoppingCart();
+
+  const quantity = getItemQuantity(id);
 
   return (
     <div className="rounded my-1 h-full">
@@ -28,23 +36,31 @@ const StoreItem: FC<Props> = ({ id, name, price, imgUrl }) => {
 
         <div className="mt-auto">
           {quantity === 0 ? (
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-md text-center p-3">
+            <button
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-md text-center p-3"
+              onClick={() => increaseCartQuantity(id)}>
               + Add To Cart
             </button>
           ) : (
             <div className="flex flex-col items-center gap-2">
               <div className="flex justify-center items-center gap-2">
-                <button className="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white text-center text-xl font-semibold rounded">
+                <button
+                  className="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white text-center text-xl font-semibold rounded"
+                  onClick={() => decreaseCartQuantity(id)}>
                   -
                 </button>
                 <div>
                   <span className="text-2xl">{quantity}</span> in cart
                 </div>
-                <button className="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white text-center text-xl font-semibold rounded">
+                <button
+                  className="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white text-center text-xl font-semibold rounded"
+                  onClick={() => increaseCartQuantity(id)}>
                   +
                 </button>
               </div>
-              <button className="w-20 h-10 bg-red-600 hover:bg-red-700 text-white text-center font-semibold rounded">
+              <button
+                className="w-20 h-10 bg-red-600 hover:bg-red-700 text-white text-center font-semibold rounded"
+                onClick={() => removeFromCart(id)}>
                 Remove
               </button>
             </div>

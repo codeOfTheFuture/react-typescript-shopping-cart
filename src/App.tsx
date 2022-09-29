@@ -4,10 +4,11 @@ import Store from "./pages/Store";
 import About from "./pages/About";
 import Navbar from "./components/Navbar";
 import Container from "./components/Container";
+import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 
 function App() {
   return (
-    <>
+    <ShoppingCartProvider>
       <Navbar />
       <Container>
         <div className="mb-4">
@@ -18,7 +19,7 @@ function App() {
           </Routes>
         </div>
       </Container>
-    </>
+    </ShoppingCartProvider>
   );
 }
 
