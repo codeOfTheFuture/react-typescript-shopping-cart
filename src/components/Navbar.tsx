@@ -3,7 +3,7 @@ import Container from "./Container";
 import { NavLink } from "react-router-dom";
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import { useShoppingCart } from "../context/ShoppingCartContext";
-import useClickOutside from "../hooks/useClickOutside";
+import { useClickOutside } from "../hooks/useClickOutside";
 import ShoppingCart from "./ShoppingCart";
 
 const Navbar: FC = () => {

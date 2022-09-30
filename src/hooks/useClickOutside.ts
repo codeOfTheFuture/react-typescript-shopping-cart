@@ -19,7 +19,7 @@ function useEventListener(
   }, [eventType, element]);
 }
 
-export default function useClickOutside(
+export function useClickOutside(
   ref: RefObject<HTMLElement>,
   cb: (e: Event) => void
 ) {
